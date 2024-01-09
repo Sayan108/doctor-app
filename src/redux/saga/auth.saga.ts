@@ -1,8 +1,9 @@
 // authSaga.ts
 import { takeLatest, put, call } from 'redux-saga/effects';
-import { authSlice} from '../silces/auth.silce';
-import { RootState } from '../silces';
+import { authSlice } from "../silces/auth.silce";
 import { apiServices } from "../../services/api.services";
+import { AxiosResponse } from "axios";
+import { routes } from "../../routes.constants";
 function* handleAuthRequest(action: any) {
   try {
     const response = apiServices.logInCall(action.payload);
@@ -13,13 +14,27 @@ function* handleAuthRequest(action: any) {
   }
 }
 
-function* handleRegistrationRequest(action:any){
-  try{
-    const response = apiServices.registrationCall(action.payload);
+function* handleRegistrationRequest(action: any) {
+  try {
+    const data = action.payload;
+    const body = {
+      firstname: data.firstname,
+      lastname: data.lastname,
+      phoneNo: data.phoneNo,
+      address: data.address,
+      email: data.email,
+      password: data.password,
+    };
 
-    yield put(authSlice.actions.registrationSuccess(response));
-  }catch (error) {
-    yield put(authSlice.actions.registrationFailed(error))
+    const response: AxiosResponse = yield call(
+      apiServices.registrationCall,
+      body
+    );
+    if (response?.status === 200 || response?.status === 201)
+      yield put(authSlice.actions.registrationSuccess(response));
+    window.location.replace(routes.LOGIN);
+  } catch (error) {
+    yield put(authSlice.actions.registrationFailed(error));
   }
 }
 

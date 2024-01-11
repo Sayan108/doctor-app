@@ -1,7 +1,7 @@
 import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 
-interface Props {
+export interface Props {
   children: React.ReactNode;
 }
 

@@ -29,7 +29,7 @@ const AuthLayOut: React.FunctionComponent<Props> = (props: Props) => {
       >
         <Stack
           spacing={4}
-          direction={{ xs: "column", sm: "row" }} // Stack children vertically on small screens, horizontally on larger screens
+          direction={{ xs: "column", sm: "row" }} // Stackk children vertically on small screens, horizontally on larger screens
         >
           {props.children}
 

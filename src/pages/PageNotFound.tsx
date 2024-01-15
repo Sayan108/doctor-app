@@ -3,7 +3,7 @@ import React from "react";
 const PageNotFound = () => {
   return (
     <>
-      <Box>
+      <Box sx={{}}>
         <Typography variant="h1">kya kar raha hain bhai</Typography>
       </Box>
     </>

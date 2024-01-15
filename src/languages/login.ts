@@ -8,4 +8,9 @@ export const logInTexts = {
     placeHolder: "Password",
     key: "password",
   },
+
+  buttonText: {
+    signin: "Sign in",
+    signup: "Sign up",
+  },
 };

@@ -17,7 +17,7 @@ import { routes } from "../../routes.constants";
 import { logInTexts } from "../../languages/login";
 
 const Login = () => {
-  const { username, password } = logInTexts;
+  const { username, password, buttonText } = logInTexts;
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -89,10 +89,10 @@ const Login = () => {
           justifyContent="space-between"
         >
           <Button variant="contained" onClick={handleLogIn}>
-            Login
+            {buttonText.signin}
           </Button>
           <Button variant="contained" onClick={handleRegistrationButtonClick}>
-            Signup
+            {buttonText.signup}
           </Button>
         </Stack>
       </Stack>

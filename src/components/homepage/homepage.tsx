@@ -1,20 +1,12 @@
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+
+import Header from "../shared/header";
 
 const Homepage = () => {
-  const navigate = useNavigate();
   return (
     <Box>
-      This is our fuckin awsome home page
-      <Button
-        onClick={() => {
-          navigate("/login");
-        }}
-        variant="contained"
-      >
-        Logout
-      </Button>
+      <Header />
     </Box>
   );
 };

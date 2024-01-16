@@ -8,18 +8,21 @@ import {
   Button,
   Stack,
   Box,
+  CircularProgress,
 } from "@mui/material";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { authRequested } from "../../redux/silces/auth.silce";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../routes.constants";
 import { logInTexts } from "../../languages/login";
-
+import useAuthService from "../../hooks/useAuthServices";
+import { RootState } from "../../redux/silces";
 const Login = () => {
   const { username, password, buttonText } = logInTexts;
+  const isLoading = useSelector((state: RootState) => state.auth.isLoading);
+  const { handlelogIn } = useAuthService();
   const [showPassword, setShowPassword] = useState(false);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = (
@@ -30,10 +33,9 @@ const Login = () => {
   const handleRegistrationButtonClick = () => {
     navigate(routes.REGISTRATION);
   };
-  const handleLogIn = (e: any) => {
-    e.preventDefault();
-    dispatch(authRequested({ userName: "sayan", passWord: "sayan" }));
-    //  navigate(routes.DASHBOARD);
+
+  const handleLogInClick = (payload: any) => {
+    handlelogIn(payload);
   };
 
   return (
@@ -88,8 +90,12 @@ const Login = () => {
           display="flex"
           justifyContent="space-between"
         >
-          <Button variant="contained" onClick={handleLogIn}>
-            {buttonText.signin}
+          <Button
+            variant="contained"
+            onClick={handleLogInClick}
+            disabled={isLoading}
+          >
+            {isLoading ? <CircularProgress /> : buttonText.signin}
           </Button>
           <Button variant="contained" onClick={handleRegistrationButtonClick}>
             {buttonText.signup}

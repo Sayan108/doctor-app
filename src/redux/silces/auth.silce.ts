@@ -6,7 +6,7 @@ export const authSlice = createSlice({
   initialState: IAuthStateInitialState,
 
   reducers: {
-    authRequested: (state: IAuthState, action: PayloadAction<any>) => {
+    authRequested: (state: IAuthState) => {
       return {
         ...state,
         isLoading: true,

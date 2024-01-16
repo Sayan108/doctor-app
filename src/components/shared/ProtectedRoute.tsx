@@ -10,7 +10,7 @@ const ProtectedRoute: any = (props: Props) => {
   );
   const location = useLocation();
 
-  if (isAuthenticated) {
+  if (!isAuthenticated) {
     return <Navigate to={routes.LOGIN} state={{ from: location }} replace />;
   }
   return props.children;

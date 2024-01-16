@@ -14,11 +14,13 @@ const useAuthService = () => {
   const handlelogIn = async (payload: any) => {
     dispatch(authRequested());
     try {
-      const response = await apiServices.logInCall(payload);
-      if (response.status === 200 || response.status === 201) {
-        dispatch(authSuccess(response.data));
-        navigate(routes.DASHBOARD);
-      }
+      // const response = await apiServices.logInCall(payload);
+      dispatch(authSuccess({}));
+      navigate(routes.DASHBOARD);
+      // if (response.status === 200 || response.status === 201) {
+      //   dispatch(authSuccess(response.data));
+      //   navigate(routes.DASHBOARD);
+      // }
     } catch (error: any) {
       dispatch(authFailed(error));
     }

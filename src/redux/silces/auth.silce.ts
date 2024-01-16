@@ -47,6 +47,14 @@ export const authSlice = createSlice({
         errormessege: action.payload,
       };
     },
+
+    logOut: (state: IAuthState) => {
+      return {
+        ...state,
+        isAuthenticated: false,
+        userDetails: null,
+      };
+    },
   },
 });
 export const {
@@ -56,6 +64,7 @@ export const {
   registrationRequested,
   registrationSuccess,
   registrationFailed,
+  logOut,
 } = authSlice.actions;
 
 export const authReducer = authSlice.reducer;

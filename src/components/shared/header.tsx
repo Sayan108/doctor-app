@@ -1,39 +1,37 @@
-import React from "react";
-import {
-  AppBar,
-  Toolbar,
-  CssBaseline,
-  Typography,
-  Stack,
-  Button,
-} from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
-import { routes } from "../../routes.constants";
+import React, { useState } from "react";
+import { AppBar, Toolbar, Typography, Stack, Box } from "@mui/material";
+import { AccountCircle } from "@mui/icons-material";
+import ProfileModal from "./profileModal";
 
 function Header() {
-  const navigate = useNavigate();
-  const handleLogout = () => {
-    navigate(routes.LOGIN);
+  const [isOpen, setisOpen] = useState<boolean>(false);
+  const toogleModalState = () => {
+    setisOpen(!isOpen);
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#333" }}>
-      <Toolbar sx={{ color: "gray" }}>
-        <Typography variant="h4" sx={{ flexGrow: 1 }}>
-          Doctors' App
-        </Typography>
-        <Stack direction={"row"} sx={{}}>
-          <Link to="/">Home</Link>
-          <Button
-            variant="contained"
-            onClick={handleLogout}
-            sx={{ backgroundColor: "red", color: "#fff" }}
+    <>
+      <AppBar position="static" sx={{ backgroundColor: "#333" }}>
+        <Toolbar sx={{ color: "white" }}>
+          <Typography
+            variant="h4"
+            sx={{ flexGrow: 1, cursor: "pointer" }}
+            onClick={() => {
+              console.log("clicking");
+            }}
           >
-            Log out
-          </Button>
-        </Stack>
-      </Toolbar>
-    </AppBar>
+            Doctors' App
+          </Typography>
+          <Stack direction={"row"} sx={{}} spacing={"4"}>
+            <Box onClick={toogleModalState} sx={{ cursor: "pointer" }}>
+              {" "}
+              <AccountCircle />
+            </Box>
+          </Stack>
+        </Toolbar>
+      </AppBar>
+      <ProfileModal isOpen={isOpen} toggleModalState={toogleModalState} />
+    </>
   );
 }
 

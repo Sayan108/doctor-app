@@ -93,9 +93,9 @@ const Login = () => {
           <Button
             variant="contained"
             onClick={handleLogInClick}
-            disabled={isLoading}
+            //  disabled={isLoading}
           >
-            {isLoading ? <CircularProgress /> : buttonText.signin}
+            {buttonText.signin}
           </Button>
           <Button variant="contained" onClick={handleRegistrationButtonClick}>
             {buttonText.signup}

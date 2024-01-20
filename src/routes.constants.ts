@@ -1,6 +1,6 @@
 export const routes = {
   REGISTRATION: "/registration",
-  DASHBOARD: "/dashboard",
+  DASHBOARD: "/",
   LOGIN: "/login",
   ROOT: "/",
 };

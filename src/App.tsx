@@ -7,7 +7,8 @@ import PageNotFound from "./pages/PageNotFound";
 import Homepage from "./components/homepage/homepage";
 import ProtectedRoute from "./components/shared/ProtectedRoute";
 import Header from "./components/shared/header";
-import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
+import SecondaryHeader from "./components/shared/secondaryHeader";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 import { RootState } from "./redux/silces";
 function App() {
   const showHeader = useSelector(
@@ -15,7 +16,11 @@ function App() {
   );
   return (
     <div className="App">
-      {showHeader ? <Header /> : null}
+      {showHeader ? (
+        <>
+          <Header /> <SecondaryHeader />
+        </>
+      ) : null}
       <Routes>
         <Route
           index

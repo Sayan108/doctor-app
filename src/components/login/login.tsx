@@ -93,7 +93,7 @@ const Login = () => {
           <Button
             variant="contained"
             onClick={handleLogInClick}
-            //  disabled={isLoading}
+            disabled={isLoading}
           >
             {buttonText.signin}
           </Button>

@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import { AppBar, Toolbar, Typography, Stack, Box } from "@mui/material";
 import { AccountCircle } from "@mui/icons-material";
 import ProfileModal from "./profileModal";
+import { useNavigate } from "react-router-dom";
+import { routes } from "../../routes.constants";
 
 function Header() {
   const [isOpen, setisOpen] = useState<boolean>(false);
+  const navigate = useNavigate();
   const toogleModalState = () => {
     setisOpen(!isOpen);
   };
-
+  const handleLogoClick = () => {
+    navigate(routes.DASHBOARD);
+  };
   return (
     <>
       <AppBar position="static" sx={{ backgroundColor: "#333" }}>
@@ -16,9 +21,7 @@ function Header() {
           <Typography
             variant="h4"
             sx={{ flexGrow: 1, cursor: "pointer" }}
-            onClick={() => {
-              console.log("clicking");
-            }}
+            onClick={handleLogoClick}
           >
             Doctors' App
           </Typography>

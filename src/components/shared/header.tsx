@@ -7,11 +7,17 @@ import { routes } from "../../routes.constants";
 import { headerText } from "../../languages/header";
 
 function Header() {
-  const [isOpen, setisOpen] = useState<boolean>(false);
   const navigate = useNavigate();
-  const toogleModalState = () => {
-    setisOpen(!isOpen);
+
+  const [isOpen, setisOpen] = useState<HTMLElement | null>(null);
+
+  const handleClick = (event: any) => {
+    setisOpen(event?.currentTarget);
   };
+  const handleClose = () => {
+    setisOpen(null);
+  };
+
   const handleLogoClick = () => {
     navigate(routes.DASHBOARD);
   };
@@ -60,14 +66,18 @@ function Header() {
               </a>
             </Stack>
 
-            <Box onClick={toogleModalState} sx={{ cursor: "pointer" }}>
+            <Box onClick={handleClick} sx={{ cursor: "pointer" }}>
               {" "}
               <AccountCircle />
             </Box>
           </Stack>
         </Toolbar>
       </AppBar>
-      <ProfileModal isOpen={isOpen} toggleModalState={toogleModalState} />
+      <ProfileModal
+        isOpen={isOpen}
+        toggleModalState={handleClick}
+        handleClose={handleClose}
+      />
     </>
   );
 }

@@ -10,7 +10,7 @@ const SecondaryHeader = () => {
     navigate(e.currentTarget.id);
   };
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#333" }}>
+    <AppBar position="static" sx={{ backgroundColor: "blueviolet" }}>
       <Toolbar sx={{ color: "white" }}>
         <Stack
           sx={{

@@ -7,7 +7,7 @@ import { logOut } from "../../redux/silces/auth.silce";
 
 const ProfileModal = (props: any) => {
   const dispatch = useDispatch();
-  const { isOpen, toggleModalState } = props;
+  const { isOpen, toggleModalState, handleClose } = props;
   const navigate = useNavigate();
   const handleLogout = () => {
     dispatch(logOut());
@@ -44,8 +44,9 @@ const ProfileModal = (props: any) => {
         }}
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-        open={isOpen}
-        onClose={toggleModalState}
+        open={Boolean(isOpen)}
+        onClose={handleClose}
+        anchorEl={isOpen}
       >
         <MenuItem>Profile</MenuItem>
         <MenuItem>Appoinments</MenuItem>
